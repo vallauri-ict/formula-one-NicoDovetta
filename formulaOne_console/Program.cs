@@ -6,7 +6,9 @@ namespace formulaOne_console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.Title = "Formula one - Batch operations";
+            Console.WriteLine("*** Formula one - Batch operations ***");
+            Console.ReadKey();
         }
     }
 }
