@@ -1,0 +1,21 @@
+								NEL CODICE SOLO L'INGLESe
+TABELLE AL SINGOLARE
+
+- SOLO 2 PILOTI PER TEAM;
+- Gestire indicazione pool position;
+- Gestione giro più veloce;
+- 21 gare totali;
+- Nessuna limitazione su numero di campionati per nazione;
+- Ogni campionato ha tracciati e sedi differenti che raramente coincidono,
+- Nessuna storicizzazione dei dati, gestione monoannuale;
+- Tabelle, ad esempio della nazione, solo per le combo;
+- Per le immagini (scuderie, piloti, caschi, ecc...) immagine come dato blob nel database, oppure aganciato al database uno storage fisico. Probabilmente blob perchè se ci portiamo dietro il database portiamo dietro tutto;
+- Utilizziamo access, forse sequel server;
+- Soluzione multiprogetto(cli di management database, windows form gestione anagrafica, web services con asp .net e poi javascript);
+
+
+Tabelle necessarie
+1. Driver
+2. Team (Name, full name, base, team chief, power unit, logo small, logo explicit, car, color)
+
+3. Country(Nomi nazioni)
