@@ -3,4 +3,6 @@
 ### I.I.S. "G. Vallauri" - Fossano (CN)
 
 Next Features:
-Tables for anagraphics logistic.
+1. Adding CLI for batch operations;
+2. Adding the registry management for teams and drivers;
+3. Implement ASP .net project for web services.
