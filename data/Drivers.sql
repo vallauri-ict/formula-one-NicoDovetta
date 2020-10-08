@@ -13,8 +13,8 @@ CREATE TABLE [dbo].[Driver]
 
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\alexalbon-helmet.png',
-		'C:\\data\\FormulaOne\\img\\alexalbon.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Alexander Albon',
 		23,
 		7,
@@ -24,8 +24,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\antonio-helmet.png',
-		'C:\\data\\FormulaOne\\img\\antonio.png',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Antonio Giovinazzi',
 		99,
 		1,
@@ -35,8 +35,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\lewis-helmet.png',
-		'C:\\data\\FormulaOne\\img\\lewis.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Lewis Hamilton',
 		44,
 		6,
@@ -46,8 +46,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\lando-helmet.png',
-		'C:\\data\\FormulaOne\\img\\lando.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Lando Norris',
 		4,
 		5,
@@ -57,8 +57,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\georgerussel-helmet.png',
-		'C:\\data\\FormulaOne\\img\\georgerussel.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'George Russel',
 		63,
 		10,
@@ -68,8 +68,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\valtteri-helmet.png',
-		'C:\\data\\FormulaOne\\img\\valtteri.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Valtteri Bottas',
 		77,
 		6,
@@ -79,8 +79,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\danil-helmet.png',
-		'C:\\data\\FormulaOne\\img\\danil.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Danil Kvyat',
 		26,
 		2,
@@ -90,8 +90,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\ocon-helmet.png',
-		'C:\\data\\FormulaOne\\img\\ocon.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Esteban Ocon',
 		31,
 		8,
@@ -101,8 +101,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\sainz-helmet.png',
-		'C:\\data\\FormulaOne\\img\\sainz.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Carlos Sainz',
 		55,
 		5,
@@ -112,8 +112,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\pierre-helmet.png',
-		'C:\\data\\FormulaOne\\img\\pierre.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Pierre Gasly',
 		10,
 		2,
@@ -123,8 +123,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\latifi-helmet.png',
-		'C:\\data\\FormulaOne\\img\\latifi.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Nicholas Latifi',
 		6,
 		10,
@@ -134,8 +134,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\perez-helmet.png',
-		'C:\\data\\FormulaOne\\img\\perez.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Sergio Perez',
 		11,
 		9,
@@ -145,8 +145,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\stroll-helmet.png',
-		'C:\\data\\FormulaOne\\img\\stroll.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Lance Stroll',
 		18,
 		9,
@@ -156,8 +156,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\leclerc-helmet.png',
-		'C:\\data\\FormulaOne\\img\\leclerc.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Charles Leclerc',
 		16,
 		3,
@@ -167,8 +167,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\kimi-helmet.png',
-		'C:\\data\\FormulaOne\\img\\kimi.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Kimi Raikkonen',
 		7,
 		1,
@@ -178,8 +178,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\max-helmet.png',
-		'C:\\data\\FormulaOne\\img\\max.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Max Verstappen',
 		33,
 		7,
@@ -189,8 +189,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\romain-helmet.png',
-		'C:\\data\\FormulaOne\\img\\romain.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Romain Grosjean',
 		8,
 		4,
@@ -200,8 +200,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\magnussen-helmet.png',
-		'C:\\data\\FormulaOne\\img\\magnussen.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Kevin Magnussen',
 		20,
 		4,
@@ -211,8 +211,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\daniel-helmet.png',
-		'C:\\data\\FormulaOne\\img\\daniel.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Daniel Ricciardo',
 		3,
 		8,
@@ -222,8 +222,8 @@ VALUES(
 );
 INSERT INTO [Driver]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\seb-helmet.png',
-		'C:\\data\\FormulaOne\\img\\seb.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'Sebastian Vettel',
 		5,
 		3,

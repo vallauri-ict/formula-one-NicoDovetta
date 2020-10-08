@@ -16,9 +16,9 @@ CREATE TABLE [dbo].[Team]
 
 INSERT INTO [Team]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\alfa-car.png',
-		'C:\\data\\FormulaOne\\img\\alfa-team-fulllogo.png',
-		'C:\\data\\FormulaOne\\img\\alfa-team-smalllogo.png',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'#960000',
 		'Alfa Romeo Racing ORLEN',
 		'Alfa Romeo',
@@ -30,9 +30,9 @@ VALUES(
 );
 INSERT INTO [Team]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\alphatauri-car.png',
-		'C:\\data\\FormulaOne\\img\\alphatauri-team-fulllogo.png',
-		'C:\\data\\FormulaOne\\img\\alphatauri-team-smalllogo.png',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'#FFFFFF',
 		'Scuderia AlphaTauri Honda',
 		'Alphatauri',
@@ -44,9 +44,9 @@ VALUES(
 );
 INSERT INTO [Team]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\ferrari-car.png',
-		'C:\\data\\FormulaOne\\img\\ferrari-team-fulllogo.png',
-		'C:\\data\\FormulaOne\\img\\ferrari-team-smalllogo.png',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'#DC0000',
 		'Scuderia Ferrari Mission Winnow',
 		'Ferrari',
@@ -58,9 +58,9 @@ VALUES(
 );
 INSERT INTO [Team]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\haas-car.png',
-		'C:\\data\\FormulaOne\\img\\haas-team-fulllogo.png',
-		'C:\\data\\FormulaOne\\img\\haas-team-smalllogo.png',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'#787878',
 		'Haas F1 Team',
 		'Haas',
@@ -72,9 +72,9 @@ VALUES(
 );
 INSERT INTO [Team]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\mac-car.png',
-		'C:\\data\\FormulaOne\\img\\mac-team-fulllogo.png',
-		'C:\\data\\FormulaOne\\img\\mac-team-smalllogo.png',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'#FF8700',
 		'McLaren F1 Team',
 		'McLaren',
@@ -86,9 +86,9 @@ VALUES(
 );
 INSERT INTO [Team]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\mer-car.png',
-		'C:\\data\\FormulaOne\\img\\mer-team-fulllogo.png',
-		'C:\\data\\FormulaOne\\img\\mer-team-smalllogo.png',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'#00D2BE',
 		'Mercedes-AMG Petronas F1 Team',
 		'Mercedes',
@@ -100,9 +100,9 @@ VALUES(
 );
 INSERT INTO [Team]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\red-car.png',
-		'C:\\data\\FormulaOne\\img\\red-team-fulllogo.png',
-		'C:\\data\\FormulaOne\\img\\red-team-smalllogo.png',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'#0600EF',
 		'Aston Martin Red Bull Racing',
 		'Red Bull Racing',
@@ -114,9 +114,9 @@ VALUES(
 );
 INSERT INTO [Team]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\ren-car.png',
-		'C:\\data\\FormulaOne\\img\\ren-team-fulllogo.png',
-		'C:\\data\\FormulaOne\\img\\ren-team-smalllogo.png',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'#FFF500',
 		'Renault DP World F1 Team',
 		'Renault',
@@ -129,9 +129,9 @@ VALUES(
 
 INSERT INTO [Team]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\rp-car.png',
-		'C:\\data\\FormulaOne\\img\\rp-team-fulllogo.png',
-		'C:\\data\\FormulaOne\\img\\rp-team-smalllogo.png',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'#F596C8',
 		'BWT Racing Point F1 Team',
 		'Racing Point',
@@ -144,9 +144,9 @@ VALUES(
 
 INSERT INTO [Team]
 VALUES(
-		'C:\\data\\FormulaOne\\img\\williams-car.png',
-		'C:\\data\\FormulaOne\\img\\williams-team-fulllogo.png',
-		'C:\\data\\FormulaOne\\img\\williams-team-smalllogo.png',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
+		'C:\\data\\formulaOne\\img\\immagine.jpg',
 		'#0082FA',
 		'Williams Racing',
 		'Williams',
