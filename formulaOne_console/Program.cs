@@ -33,6 +33,12 @@ namespace formulaOne_console
                     case '1':
                         ExecuteSqlScript("Countries.sql");
                         break;
+                    case '2':
+                        ExecuteSqlScript("Teams.sql");
+                        break;
+                    case '3':
+                        ExecuteSqlScript("Drivers.sql");
+                        break;
                     default:
                         if (c != 'x' && c != 'X')
                         {
@@ -45,19 +51,15 @@ namespace formulaOne_console
 
         public static void ExecuteSqlScript(string sqlScriptName)
         {
-            var fileContent = File.ReadAllText(WORKINGPATH + sqlScriptName);
-            fileContent = fileContent
-                .Replace("\r\n", "")
-                .Replace("\r", "")
-                .Replace("\n", "")
-                .Replace("\t", "");
+            string fileContent = File.ReadAllText(WORKINGPATH + sqlScriptName);
+            fileContent = fileContent.Replace("\r\n", "").Replace("\r", "").Replace("\n", "").Replace("\t", "");
             var sqlqueries = fileContent.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
 
-            var con = new SqlConnection(CONNECTION_STRING);
-            var cmd = new SqlCommand("query", con);
+            SqlConnection con = new SqlConnection(CONNECTION_STRING);
+            SqlCommand cmd = new SqlCommand("query", con);
             con.Open();
-            var i = 0;
-            int nr = 0;
+
+            int i = 0, nr = 0;
             foreach (var query in sqlqueries)
             {
                 cmd.CommandText = query;
@@ -73,6 +75,7 @@ namespace formulaOne_console
                     nr++;
                 }
             }
+
             Console.Clear();
             Console.WriteLine($"Processo di creazione della tabella \"{sqlScriptName.Substring(0, sqlScriptName.IndexOf('.'))}\" terminato con {i} error{(i == 1 ? "e" : "i")}.");
             System.Threading.Thread.Sleep(3500);
