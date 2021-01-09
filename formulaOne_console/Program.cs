@@ -49,10 +49,10 @@ namespace formulaOne_console
                         show("countries");
                         break;
                     case '5':
-                        show("teams");
+                        show("teams",25);
                         break;
                     case '6':
-                        show("drivers");
+                        show("drivers",18);
                         break;
                     default:
                         if (c != 'x' && c != 'X')
@@ -64,20 +64,41 @@ namespace formulaOne_console
             } while (c != 'x' && c != 'X');
         }
 
-		private static void show(string tableName)
+        /// <summary>
+        /// Esegue il display a video della tabella scelta.
+        /// </summary>
+        /// <param name="tableName">Nome della tabella da visualizzare</param>
+        /// <param name="nChar">Numero di caratteri riservati per ogni campo</param>
+		private static void show(string tableName, int nChar = 10)
 		{
+            Console.Clear();
             using(System.Data.DataTable dt = dbManager.getTableElement(tableName))
 			{
 				foreach (System.Data.DataRow row in dt.Rows)
 				{
 					foreach (var item in row.ItemArray)
 					{
-                        Console.Write($"{item}\t");
+						if (!item.ToString().Contains("System."))
+						{
+                            DateTime date;
+                            string aus = item.ToString();
+                            if (DateTime.TryParse(item.ToString(),out date))
+							{
+                                aus = $"{date.Day}/{date.Month}/{date.Year}";
+							}
+                            Console.Write(String.Format("| {0,-" + nChar + "}", aus));
+                        }
+                        else
+						{
+                            //Con il meno davanti al numero allinea a sinistra, altrimenti allinea a destra
+                            Console.Write(String.Format("| {0,-" + nChar + "}", "img unavaiable"));
+                        }                       
                     }
                     Console.WriteLine();
                 }
-                Console.ReadKey();
             }
+            Console.WriteLine("\n\nPress any button to return to the start menù");
+            Console.ReadKey();
         }
 	}
 }

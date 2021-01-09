@@ -11,6 +11,8 @@ CREATE TABLE [dbo].[Drivers]
 	[Pob] varchar(150) NOT NULL default ''
 );
 
+SET DATEFORMAT dmy;
+
 INSERT INTO [Drivers]
 VALUES(
 	98091300,
