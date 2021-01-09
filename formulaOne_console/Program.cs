@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Data.SqlClient;
+using dll_Utilities;
+
 
 namespace formulaOne_console
 {
@@ -8,6 +9,8 @@ namespace formulaOne_console
     {
         public const string WORKINGPATH = @"C:\data\formulaOne\";
         private const string CONNECTION_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + WORKINGPATH + @"FormulaOne.mdf;Integrated Security=True";
+
+        private static Utilities_Database dbManager = new Utilities_Database(WORKINGPATH, CONNECTION_STRING);
 
         private static void menu()
         {
@@ -31,13 +34,13 @@ namespace formulaOne_console
                 switch (c)
                 {
                     case '1':
-                        ExecuteSqlScript("Countries.sql");
+                        dbManager.ExecuteSqlScript("Countries.sql");
                         break;
                     case '2':
-                        ExecuteSqlScript("Teams.sql");
+                        dbManager.ExecuteSqlScript("Teams.sql");
                         break;
                     case '3':
-                        ExecuteSqlScript("Drivers.sql");
+                        dbManager.ExecuteSqlScript("Drivers.sql");
                         break;
                     default:
                         if (c != 'x' && c != 'X')
@@ -47,39 +50,6 @@ namespace formulaOne_console
                         break;
                 }
             } while (c != 'x' && c != 'X');
-        }
-
-        public static void ExecuteSqlScript(string sqlScriptName)
-        {
-            string fileContent = File.ReadAllText(WORKINGPATH + sqlScriptName);
-            fileContent = fileContent.Replace("\r\n", "").Replace("\r", "").Replace("\n", "").Replace("\t", "");
-            var sqlqueries = fileContent.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
-
-            SqlConnection con = new SqlConnection(CONNECTION_STRING);
-            SqlCommand cmd = new SqlCommand("query", con);
-            con.Open();
-
-            int i = 0, nr = 0;
-            foreach (var query in sqlqueries)
-            {
-                cmd.CommandText = query;
-                i++;
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                catch (SqlException err)
-                {
-                    Console.WriteLine("Errore in esecuzione della query numero: " + i);
-                    Console.WriteLine("\tErrore SQL: " + err.Number + " - " + err.Message);
-                    nr++;
-                }
-            }
-
-            Console.Clear();
-            Console.WriteLine($"Processo di creazione della tabella \"{sqlScriptName.Substring(0, sqlScriptName.IndexOf('.'))}\" terminato con {i} error{(i == 1 ? "e" : "i")}.");
-            System.Threading.Thread.Sleep(3500);
-            con.Close();
         }
     }
 }
