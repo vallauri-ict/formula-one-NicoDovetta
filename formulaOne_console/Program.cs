@@ -20,6 +20,9 @@ namespace formulaOne_console
             Console.WriteLine("1 - Execute import countries table;");
             Console.WriteLine("2 - Execute import teams table;");
             Console.WriteLine("3 - Execute import drivers table;");
+            Console.WriteLine("4 - Show countries table elements;");
+            Console.WriteLine("5 - Show teams table elements;");
+            Console.WriteLine("6 - Show drivers table elements;");
             Console.WriteLine("X - Exit.");
             Console.Write("\nYour selection: ");
         }
@@ -42,6 +45,15 @@ namespace formulaOne_console
                     case '3':
                         dbManager.ExecuteSqlScript("Drivers.sql");
                         break;
+                    case '4':
+                        show("countries");
+                        break;
+                    case '5':
+                        show("teams");
+                        break;
+                    case '6':
+                        show("drivers");
+                        break;
                     default:
                         if (c != 'x' && c != 'X')
                         {
@@ -51,5 +63,21 @@ namespace formulaOne_console
                 }
             } while (c != 'x' && c != 'X');
         }
-    }
+
+		private static void show(string tableName)
+		{
+            using(System.Data.DataTable dt = dbManager.getTableElement(tableName))
+			{
+				foreach (System.Data.DataRow row in dt.Rows)
+				{
+					foreach (var item in row.ItemArray)
+					{
+                        Console.Write($"{item}\t");
+                    }
+                    Console.WriteLine();
+                }
+                Console.ReadKey();
+            }
+        }
+	}
 }

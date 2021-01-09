@@ -53,7 +53,6 @@ namespace dll_Utilities
 
             Console.Clear();
             Console.WriteLine($"Processo di creazione della tabella \"{sqlScriptName.Substring(0, sqlScriptName.IndexOf('.'))}\" terminato con {nr} error{(nr == 1 ? "e" : "i")}.");
-            System.Threading.Thread.Sleep(3500);
             con.Close();
         }
 
@@ -63,7 +62,6 @@ namespace dll_Utilities
             SqlConnection con = new SqlConnection(CONNECTION_STRING);
             SqlCommand cmd = new SqlCommand("query", con);
             con.Open();
-            int nr = 0;
 
             cmd.CommandText = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES";
             try
@@ -79,8 +77,8 @@ namespace dll_Utilities
             {
                 Console.WriteLine("\tErrore SQL: " + err.Number + " - " + err.Message);
                 Console.ReadKey();
-                nr++;
             }
+            con.Close();
         }
 
         public DataTable getTableElement(string tbName)
@@ -88,9 +86,6 @@ namespace dll_Utilities
             DataTable dt = new DataTable();
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
-                Console.WriteLine("\nQuery data example:");
-                Console.WriteLine("=========================================\n");
-
                 StringBuilder sb = new StringBuilder();
                 string sql = $"SELECT * FROM {tbName}";
 
@@ -103,6 +98,7 @@ namespace dll_Utilities
                     da.Fill(dt);
                     connection.Close();
                     da.Dispose();
+                    connection.Close();
                 }
             }
             return dt;
@@ -114,9 +110,6 @@ namespace dll_Utilities
 
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
-                Console.WriteLine("\nQuery data example:");
-                Console.WriteLine("=========================================\n");
-
                 StringBuilder sb = new StringBuilder();
                 string sql = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES";
 
@@ -131,6 +124,7 @@ namespace dll_Utilities
                             tbName.Add($"{reader.GetString(0)}");
                         }
                     }
+                    connection.Close();
                 }
             }
             return tbName;
