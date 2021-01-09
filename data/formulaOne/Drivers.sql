@@ -1,7 +1,7 @@
 CREATE TABLE [dbo].[Drivers]
 (
 	[Driver_id] int PRIMARY KEY,
-	[CountryCode] char(2) NOT NULL ,
+	[CountryCode] char(2) NOT NULL,
 	[HelmetImage] image NOT NULL,
 	[FullImage] image NOT NULL,
 	[FullName] varchar(100) NOT NULL default '',

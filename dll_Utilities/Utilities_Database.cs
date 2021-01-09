@@ -47,12 +47,14 @@ namespace dll_Utilities
                 {
                     Console.WriteLine("Errore in esecuzione della query numero: " + i);
                     Console.WriteLine("\tErrore SQL: " + err.Number + " - " + err.Message);
+                    Console.ReadKey();
                     nr++;
                 }
             }
 
             Console.Clear();
             Console.WriteLine($"Processo di creazione della tabella \"{sqlScriptName.Substring(0, sqlScriptName.IndexOf('.'))}\" terminato con {nr} error{(nr == 1 ? "e" : "i")}.");
+            Console.ReadKey();
             con.Close();
         }
 

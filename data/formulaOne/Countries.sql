@@ -250,3 +250,4 @@ INSERT INTO [Countries] VALUES ('EH', 'Western Sahara');
 INSERT INTO [Countries] VALUES ('YE', 'Yemen');
 INSERT INTO [Countries] VALUES ('ZM', 'Zambia');
 INSERT INTO [Countries] VALUES ('ZW', 'Zimbabwe');
+INSERT INTO [Countries] VALUES ('nn', 'No country');

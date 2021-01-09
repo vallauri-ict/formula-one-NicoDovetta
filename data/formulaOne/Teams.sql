@@ -9,7 +9,7 @@ CREATE TABLE [dbo].[Teams]
 	[FullLogo] image NOT NULL default '',
 	[CarImage] image NOT NULL default '',
 	[Base] varchar(100) NOT NULL default '',
-	[Country_Code] char(2) not null,
+	[CountryCode] char(2) not null,
 	[TeamChief] varchar(100) NOT NULL default '',
 	[PowerUnit] varchar(100) NOT NULL default '',
 	[WorldChampionships] int default 0
