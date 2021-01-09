@@ -7,7 +7,7 @@ namespace formulaOne_console
 {
     class Program
     {
-        public const string WORKINGPATH = @"C:\data\formulaOne\";
+        private const string WORKINGPATH = @"C:\data\formulaOne\";
         private const string CONNECTION_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + WORKINGPATH + @"FormulaOne.mdf;Integrated Security=True";
 
         private static Utilities_Database dbManager = new Utilities_Database(WORKINGPATH, CONNECTION_STRING);
