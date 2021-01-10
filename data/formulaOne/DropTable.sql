@@ -1,0 +1,6 @@
+DROP TABLE Circuits;
+DROP TABLE Races;
+DROP TABLE Countries;
+DROP TABLE Results;
+DROP TABLE Teams;
+DROP TABLE Drivers;
