@@ -84,20 +84,40 @@ namespace formulaOne_console
                     case 'c':
                         show("races");
                         break;
-                    case 'd':
+                    case 'e':
                         show("results");
-                        break;
-                    case 'f':
-                        dbManager.ExecuteSqlScript("foreignKeys.sql");
-                        break;
-                    case 'u':
-                        dbManager.ExecuteSqlScript("removeForeign.sql");
                         break;
                     case 'b':
                         dbManager.Backup();
                         break;
                     case 'r':
                         dbManager.Restore();
+                        break;
+                    case 'd':
+						{
+                            char aus;
+                            do
+                            {
+                                Console.Clear();
+                                Console.Write("Before continuing, would you like to make a DB backup? (Y/N) ");
+                                aus = Char.ToLower(Console.ReadKey().KeyChar);
+                                switch (aus)
+                                {
+                                    case 'y':
+                                        dbManager.Backup();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            } while (aus != 'y' && aus != 'n');
+                            dbManager.RestoreDefault();
+                        }
+                        break;
+                    case 'f':
+                        dbManager.ExecuteSqlScript("foreignKeys.sql");
+                        break;
+                    case 'u':
+                        dbManager.ExecuteSqlScript("removeForeign.sql");
                         break;
                     default:
                         if (c != 'x' && c != 'X')

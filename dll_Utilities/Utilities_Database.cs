@@ -47,7 +47,6 @@ namespace dll_Utilities
                 {
                     Console.WriteLine("Query execution error in query number: " + i);
                     Console.WriteLine("\tError SQL: " + err.Number + " - " + err.Message);
-                    Console.ReadKey();
                     nr++;
                 }
             }
@@ -108,6 +107,7 @@ namespace dll_Utilities
                 ok = false;
                 do
                 {
+                    Console.Clear();
                     Console.Write($"A backup named:\"{bckName}\" already exist. Overwrite it? (Y/N) ");
                     c = Char.ToLower(Console.ReadKey().KeyChar);
                     switch (c)
@@ -171,7 +171,42 @@ namespace dll_Utilities
             Thread.Sleep(1000);
         }
 
-        public void Restore()
+		public void RestoreDefault()
+		{
+            Console.Clear();
+            //Restoring db to default
+            ExecuteScript("removeForeign.sql");
+            ExecuteScript("DropTable.sql");
+            ExecuteScript("Countries.sql");
+            ExecuteScript("Teams.sql");
+            ExecuteScript("Drivers.sql");
+            ExecuteScript("Circuits.sql");
+            ExecuteScript("Races.sql");
+            ExecuteScript("Results.sql");
+            ExecuteScript("foreignKeys.sql");
+
+            Console.WriteLine("DataBase restored. Return to main menu");
+            Thread.Sleep(1000);
+        }
+
+		private void ExecuteScript(string scriptName)
+		{
+            string fileContent = File.ReadAllText(WORKINGPATH1 + scriptName);
+            fileContent = fileContent.Replace("\r\n", "").Replace("\r", "").Replace("\n", "").Replace("\t", "");
+            var sqlqueries = fileContent.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+
+            SqlConnection con = new SqlConnection(CONNECTION_STRING1);
+            SqlCommand cmd = new SqlCommand("query", con);
+            con.Open();
+            foreach (var query in sqlqueries)
+            {
+                cmd.CommandText = query;
+                cmd.ExecuteNonQuery();
+            }
+            con.Close();
+        }
+
+		public void Restore()
         {
             string bckPath = getBackupName();
 			if (bckPath != "n/a")
