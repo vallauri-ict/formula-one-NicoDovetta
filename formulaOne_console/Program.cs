@@ -29,12 +29,16 @@ namespace formulaOne_console
             Console.WriteLine("8 - Show TEAMS table elements;");
             Console.WriteLine("9 - Show DRIVERS table elements;");
             Console.WriteLine("a - Show CIRCUITS table elements;");
-            Console.WriteLine("b - Show RACES table elements;");
-            Console.WriteLine("c - Show RESULTS table elements;");
+            Console.WriteLine("c - Show RACES table elements;");
+            Console.WriteLine("e - Show RESULTS table elements;");
+            Console.WriteLine("\n>>>>>> Backup and restoring");
+            Console.WriteLine("b - Create DB backup;");
+            Console.WriteLine("r - Restore DB backup;");
+            Console.WriteLine("d - Set DB to default values;");
             Console.WriteLine("\n>>>>>> Others");
             Console.WriteLine("f - Execute set relations;");
             Console.WriteLine("u - Execute remove relations;");
-            Console.WriteLine("X - Exit.");
+            Console.WriteLine("x/X - Exit.");
             Console.Write("\nYour selection: ");
         }
 
@@ -77,10 +81,10 @@ namespace formulaOne_console
                     case 'a':
                         show("circuits",35);
                         break;
-                    case 'b':
+                    case 'c':
                         show("races");
                         break;
-                    case 'c':
+                    case 'd':
                         show("results");
                         break;
                     case 'f':
@@ -88,6 +92,12 @@ namespace formulaOne_console
                         break;
                     case 'u':
                         dbManager.ExecuteSqlScript("removeForeign.sql");
+                        break;
+                    case 'b':
+                        dbManager.Backup();
+                        break;
+                    case 'r':
+                        dbManager.Restore();
                         break;
                     default:
                         if (c != 'x' && c != 'X')
