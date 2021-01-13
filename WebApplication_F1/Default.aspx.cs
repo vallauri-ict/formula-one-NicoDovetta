@@ -17,15 +17,7 @@ namespace WebApplication_F1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-            {
-                //Eseguito sempre, tranne la prima volta che la pagina viene creata.
-                //Eleborazioni da eseguire tutte le volte che la pagina viene caricata.
-                ////lblMessaggio.Text = $"Benvenuto sig. {txtUserName.Text}";
-
-                //Riempiamo la lista delle nazioni
-            }
-            else
+            if (!Page.IsPostBack)
             {
                 //Inizzializzazioni da effettuare solo al primo caricamento della pagina.
                 lblMessaggio.Text = "Select a table name from the listbox below to visualize the element.";
@@ -37,8 +29,19 @@ namespace WebApplication_F1
         protected void loadData(object sender, EventArgs e)
         {
             //DATATABLE object
-            dataTable.DataSource = dbManager.getTableElement(lstTable.SelectedValue);
-            dataTable.DataBind();
+            System.Data.DataTable dtb = dbManager.getTableElement(lstTable.SelectedValue);
+			if (dtb.Rows.Count > 0)
+			{
+                lblNoData.Text = "";
+                dataTable.Visible = true;
+                dataTable.DataSource = dtb;
+                dataTable.DataBind();
+            }
+            else
+			{
+                dataTable.Visible = false;
+                lblNoData.Text = "No data found for this table.";
+            }
         }
 	}
 }

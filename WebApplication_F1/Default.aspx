@@ -14,12 +14,13 @@
         Username <asp:TextBox ID="txtUserName" runat="server"/><br /><br />
         Password <input type="text" ID="txtPassword"/><br /><br />
         -->
-        <div style="width:90%;height:auto;margin:3% auto;">
-            <asp:Label ID="lblMessaggio" runat="server" Text=" "/>
-            <br />
-            <asp:ListBox ID="lstTable" runat="server" Width="200px" Height="54px" style="margin-bottom: 0px" OnSelectedIndexChanged="loadData" AutoPostBack="true"></asp:ListBox>
+        <div style="width:97%;height:auto;margin:1% auto;">
+            <asp:Label ID="lblMessaggio" runat="server" Text=""/>
+            <br /><br />
+            <asp:ListBox ID="lstTable" runat="server" Width="230px" Height="64px" style="margin-bottom: 0px" OnSelectedIndexChanged="loadData" AutoPostBack="true"></asp:ListBox>
             <br /><br />
             <asp:GridView ID="dataTable" runat="server" class="table table-striped table-bordered"></asp:GridView>
+            <asp:Label ID="lblNoData" runat="server" Text=""/>
         </div>
     </form>
 </body>

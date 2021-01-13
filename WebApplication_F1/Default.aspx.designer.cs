@@ -58,5 +58,14 @@ namespace WebApplication_F1
 		/// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.GridView dataTable;
+
+		/// <summary>
+		/// Controllo lblNoData.
+		/// </summary>
+		/// <remarks>
+		/// Campo generato automaticamente.
+		/// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label lblNoData;
 	}
 }
