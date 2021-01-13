@@ -47,6 +47,8 @@ namespace dll_Utilities
                 {
                     Console.WriteLine("Query execution error in query number: " + i);
                     Console.WriteLine("\tError SQL: " + err.Number + " - " + err.Message);
+                    Console.WriteLine("\nPress any button to continue.");
+                    Console.ReadKey();
                     nr++;
                 }
             }

@@ -134,12 +134,27 @@ namespace formulaOne_console
         /// </summary>
         /// <param name="tableName">Nome della tabella da visualizzare</param>
         /// <param name="nChar">Numero di caratteri riservati per ogni campo</param>
-		private static void show(string tableName, int nChar = 10)
+        /*/// <param name="separator">Carattere separatore tra intestazione colonne e dati</param>*/
+		private static void show(string tableName, int nChar = 12/*, char separator = '-'*/)
 		{
             Console.Clear();
             bool asRow = false;
             using(System.Data.DataTable dt = dbManager.getTableElement(tableName))
 			{
+                int cCount = 0;
+				foreach (System.Data.DataColumn item in dt.Columns)
+				{
+                    cCount++;
+                    Console.Write(String.Format("| {0,-" + nChar + "}", item.ColumnName.ToString()));
+                }
+                Console.WriteLine();
+                /*
+                for (int i = 0; i < cCount*nChar; i++)
+				{
+                    Console.Write(separator);
+				}
+                Console.WriteLine();
+                */
                 foreach (System.Data.DataRow row in dt.Rows)
 				{
 					foreach (var item in row.ItemArray)
