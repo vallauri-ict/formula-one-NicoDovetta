@@ -175,22 +175,89 @@ namespace dll_Utilities
 		{
             Console.Clear();
             //Restoring db to default
-            ExecuteScript("removeForeign.sql");
-            ExecuteScript("DropTable.sql");
-            ExecuteScript("Countries.sql");
-            ExecuteScript("Teams.sql");
-            ExecuteScript("Drivers.sql");
-            ExecuteScript("Circuits.sql");
-            ExecuteScript("Races.sql");
-            ExecuteScript("Results.sql");
-            ExecuteScript("foreignKeys.sql");
-
-            Console.WriteLine("DataBase restored. Return to main menu");
-            Thread.Sleep(1000);
+            bool _ = ExecuteScript("removeForeign.sql");
+			if (ExecuteScript("DropTable.sql"))
+			{
+				if (ExecuteScript("Countries.sql"))
+				{
+					if (ExecuteScript("Teams.sql"))
+					{
+                        if (ExecuteScript("Drivers.sql"))
+                        {
+                            if (ExecuteScript("Circuits.sql"))
+                            {
+                                if (ExecuteScript("Races.sql"))
+                                {
+                                    if (ExecuteScript("Results.sql"))
+                                    {
+										if (ExecuteScript("foreignKeys.sql"))
+										{
+                                            Console.WriteLine("DataBase restored. Return to main menu");
+                                            Thread.Sleep(1000);
+                                        }
+                                        else
+										{
+                                            error();
+										}
+                                    }
+                                    else
+                                    {
+                                        error();
+                                    }
+                                }
+                                else
+                                {
+                                    error();
+                                }
+                            }
+                            else
+                            {
+                                error();
+                            }
+                        }
+                        else
+                        {
+                            error();
+                        }
+                    }
+                    else
+                    {
+                        error();
+                    }
+                }
+                else
+                {
+                    error();
+                }
+            }
+            else
+            {
+                error();
+            }
         }
 
-		private void ExecuteScript(string scriptName)
+		private void error()
 		{
+            char aus;
+            do
+            {
+                Console.Clear();
+                Console.Write("An error occourred. Start restore DB backup procedure? (Y/N) ");
+                aus = Char.ToLower(Console.ReadKey().KeyChar);
+                switch (aus)
+                {
+                    case 'y':
+                        Restore();
+                        break;
+                    default:
+                        break;
+                }
+            } while (aus != 'y' && aus != 'n');
+        }
+
+		private bool ExecuteScript(string scriptName)
+		{
+            bool ret = true;
             string fileContent = File.ReadAllText(WORKINGPATH1 + scriptName);
             fileContent = fileContent.Replace("\r\n", "").Replace("\r", "").Replace("\n", "").Replace("\t", "");
             var sqlqueries = fileContent.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
@@ -199,11 +266,19 @@ namespace dll_Utilities
             SqlCommand cmd = new SqlCommand("query", con);
             con.Open();
             foreach (var query in sqlqueries)
-            {
-                cmd.CommandText = query;
-                cmd.ExecuteNonQuery();
+			{
+				try
+				{
+                    cmd.CommandText = query;
+                    cmd.ExecuteNonQuery();
+                }
+				catch (SqlException exc)
+				{
+                    ret= false;
+				}
             }
             con.Close();
+            return ret;
         }
 
 		public void Restore()
