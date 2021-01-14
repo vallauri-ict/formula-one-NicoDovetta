@@ -31,3 +31,6 @@ First it load all the table name in a selectBox. On the change of the selectBox 
 ### 4. dll_Utilities
 
   1. Utils_Database.cs: contains all the functions ot method that will interact with the database.
+
+
+https://docs.microsoft.com/it-it/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.0&tabs=visual-studio
