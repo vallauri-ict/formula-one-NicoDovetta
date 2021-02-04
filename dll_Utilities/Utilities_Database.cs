@@ -406,6 +406,59 @@ namespace dll_Utilities
             return dt;
         }
 
+        public List<Models.Country> getTableCountry()
+        {
+            List<Models.Country> retVal = new List<Models.Country>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                string sql = $"SELECT * FROM Country;";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    
+                    // create data adapter
+                    using(SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while(reader.Read())
+                        {
+                            string isoCode = reader.GetString(0);
+                            string CountryName = reader.GetString(1);
+                            retVal.Add(new Models.Country(isoCode, CountryName));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public Models.Country getTableCountryByCode(string code)
+        {
+            Models.Country retVal = null;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Country WHERE CountryCode == '{code}';";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string isoCode = reader.GetString(0);
+                            string CountryName = reader.GetString(1);
+                            retVal = new Models.Country(isoCode, CountryName);
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
         public List<string> getTableName()
         {
             List<string> tbName = new List<string>();
