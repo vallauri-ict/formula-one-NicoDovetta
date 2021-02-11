@@ -438,7 +438,7 @@ namespace dll_Utilities
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
                 StringBuilder sb = new StringBuilder();
-                string sql = $"SELECT * FROM Country WHERE CountryCode == '{code}';";
+                string sql = $"SELECT * FROM Country WHERE CountryCode LIKE '{code}';";
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {

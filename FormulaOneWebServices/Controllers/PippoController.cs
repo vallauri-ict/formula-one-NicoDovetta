@@ -10,9 +10,9 @@ using System.Data;
 namespace FormulaOneWebServices
 {
     //api/Country
-    [Route("api/[controller]")]
+    [Route("[controller]")]//Prende il nome della classe e gli toglie controller
     [ApiController]
-    public class CountryController : ControllerBase
+    public class PippoController : ControllerBase
     {
         private const string WORKINGPATH = @"C:\data\formulaOne\";
         private const string CONNECTION_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + WORKINGPATH + @"FormulaOne.mdf;Integrated Security=True";
