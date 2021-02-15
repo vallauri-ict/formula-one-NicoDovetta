@@ -406,59 +406,6 @@ namespace dll_Utilities
             return dt;
         }
 
-        public List<Models.Country> getTableCountry()
-        {
-            List<Models.Country> retVal = new List<Models.Country>();
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
-            {
-                string sql = $"SELECT * FROM Country;";
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    
-                    // create data adapter
-                    using(SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while(reader.Read())
-                        {
-                            string isoCode = reader.GetString(0);
-                            string CountryName = reader.GetString(1);
-                            retVal.Add(new Models.Country(isoCode, CountryName));
-                        }
-                    }
-                }
-            }
-            return retVal;
-        }
-
-        public Models.Country getTableCountryByCode(string code)
-        {
-            Models.Country retVal = null;
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
-            {
-                StringBuilder sb = new StringBuilder();
-                string sql = $"SELECT * FROM Country WHERE CountryCode LIKE '{code}';";
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-
-                    // create data adapter
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            string isoCode = reader.GetString(0);
-                            string CountryName = reader.GetString(1);
-                            retVal = new Models.Country(isoCode, CountryName);
-                        }
-                    }
-                }
-            }
-            return retVal;
-        }
-
         public List<string> getTableName()
         {
             List<string> tbName = new List<string>();
@@ -483,6 +430,301 @@ namespace dll_Utilities
                 }
             }
             return tbName;
+        }
+
+        public List<Models.Circuit> getCircuitsElementList()
+        {
+            List<Models.Circuit> retVal = new List<Models.Circuit>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                string sql = $"SELECT * FROM Circuits;";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new Models.Circuit(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+
+        public Models.Circuit getCircuitByCode(int code)
+        {
+            Models.Circuit retVal = null;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Circuits WHERE Circuit_id = {code};";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal = new Models.Circuit(reader);
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public List<Models.Country> getCountryElementList()
+        {
+            List<Models.Country> retVal = new List<Models.Country>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                string sql = $"SELECT * FROM Countries;";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    
+                    // create data adapter
+                    using(SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while(reader.Read())
+                        {
+                            retVal.Add(new Models.Country(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public Models.Country getCountryByCode(string code)
+        {
+            Models.Country retVal = null;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Countries WHERE CountryCode LIKE '{code}';";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal = new Models.Country(reader);
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public List<Models.Driver> getDriverElementList()
+        {
+            List<Models.Driver> retVal = new List<Models.Driver>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                string sql = $"SELECT * FROM Drivers;";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new Models.Driver(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public Models.Driver getDriverByCode(int code)
+        {
+            Models.Driver retVal = null;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Drivers WHERE Driver_id = {code};";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal = new Models.Driver(reader);
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public List<Models.Race> getRacesElementList()
+        {
+            List<Models.Race> retVal = new List<Models.Race>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                string sql = $"SELECT * FROM Races;";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new Models.Race(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public Models.Race getRaceByCode(int code)
+        {
+            Models.Race retVal = null;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Races WHERE Race_id = {code};";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal = new Models.Race(reader);
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public List<Models.Result> getResultsElementList()
+        {
+            List<Models.Result> retVal = new List<Models.Result>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                string sql = $"SELECT * FROM Results;";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new Models.Result(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public Models.Result getResultByCode(int code)
+        {
+            Models.Result retVal = null;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Results WHERE Result_id = {code};";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal = new Models.Result(reader);
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public List<Models.Team> getTeamsElementList()
+        {
+            List<Models.Team> retVal = new List<Models.Team>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                string sql = $"SELECT * FROM Teams;";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new Models.Team(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public Models.Team getTeamByCode(int code)
+        {
+            Models.Team retVal = null;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Teams WHERE Team_id = {code};";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal = new Models.Team(reader);
+                        }
+                    }
+                }
+            }
+            return retVal;
         }
     }
 }

@@ -22,14 +22,14 @@ namespace FormulaOneWebServices
         [HttpGet]
         public List<dll_Utilities.Models.Country> Get()
         {
-            return db.getTableCountry();
+            return db.getCountryElementList();
         }
 
         // GET: api/Country/5
         [HttpGet("{id}")]
         public dll_Utilities.Models.Country Get(string id)
         {
-            return db.getTableCountryByCode(id.ToUpper());
+            return db.getCountryByCode(id.ToUpper());
         }
 
         // POST: api/Country
