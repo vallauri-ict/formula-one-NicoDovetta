@@ -18,9 +18,9 @@ namespace dll_Utilities.Models
 
 		public Race(SqlDataReader reader)
         {
-            this.id = int.Parse(reader.GetString(0));
-            this.circuitId = int.Parse(reader.GetString(1));
-            this.date = DateTime.Parse(reader.GetString(2));
+            this.id = reader.GetInt32(0);
+            this.circuitId = reader.GetInt32(1);
+            this.date = reader.GetDateTime(2);
         }
     }
 }

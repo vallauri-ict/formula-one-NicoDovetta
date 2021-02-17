@@ -22,10 +22,10 @@ namespace dll_Utilities.Models
 
 		public Result(SqlDataReader reader)
         {
-            this.id = int.Parse(reader.GetString(0));
-            this.raceId = int.Parse(reader.GetString(1));
-            this.driverId = int.Parse(reader.GetString(2));
-            this.fastestLap = DateTime.Parse(reader.GetString(3));
+            this.id = reader.GetInt32(0);
+            this.raceId = reader.GetInt32(1);
+            this.driverId = reader.GetInt32(2);
+            this.fastestLap = reader.GetDateTime(3);
             this.position = reader.GetString(4);
         }
     }

@@ -159,7 +159,16 @@ namespace formulaOne_console
 				{
 					foreach (var item in row.ItemArray)
 					{
-						if (!item.ToString().Contains("System."))
+                        asRow = true;
+                        DateTime date;
+                        string aus = item.ToString();
+                        if (DateTime.TryParse(item.ToString(), out date))
+                        {
+                            aus = $"{date.Day}/{date.Month}/{date.Year}";
+                        }
+                        Console.Write(String.Format("| {0,-" + nChar + "}", aus));
+                        /*
+                        if (!item.ToString().Contains("System."))
 						{
                             asRow = true;
                             DateTime date;
@@ -174,7 +183,7 @@ namespace formulaOne_console
 						{
                             //Con il meno davanti al numero allinea a sinistra, altrimenti allinea a destra
                             Console.Write(String.Format("| {0,-" + nChar + "}", "img unavaiable"));
-                        }                       
+                        }*/      
                     }
                     Console.WriteLine();
                 }

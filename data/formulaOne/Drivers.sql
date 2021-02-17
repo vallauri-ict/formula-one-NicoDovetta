@@ -2,8 +2,8 @@ CREATE TABLE [dbo].[Drivers]
 (
 	[Driver_id] int PRIMARY KEY,
 	[CountryCode] char(2) NOT NULL,
-	[HelmetImage] image NOT NULL,
-	[FullImage] image NOT NULL,
+	[HelmetImage] varchar(150) NOT NULL,
+	[FullImage] varchar(150) NOT NULL,
 	[FullName] varchar(100) NOT NULL default '',
 	[Podiums] int NOT NULL default 0,
 	[Points] int default 0,

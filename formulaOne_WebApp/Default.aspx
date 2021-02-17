@@ -9,6 +9,15 @@
     <link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 </head>
 <body>
+    <script src="http://code.jquery.com/jquery-latest.min.js"
+        type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            alert("Ciao");
+        });
+    
+    </script>
     <form id="form1" runat="server">
         <!--
         Username <asp:TextBox ID="txtUserName" runat="server"/><br /><br />
