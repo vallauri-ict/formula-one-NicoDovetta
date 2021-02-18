@@ -555,6 +555,30 @@ namespace dll_Utilities
             return retVal;
         }
 
+        public List<Models.dtoDriver> getDtoDrivers()
+		{
+            List<Models.dtoDriver> retVal = new List<Models.dtoDriver>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                string sql = $"SELECT d.Driver_id, d.CountryCode, d.FullImage, d.FullName, Teams.SmallName as TeamName FROM Drivers as d INNER JOIN Teams ON (d.Driver_Id = Teams.Driver1 OR D.Driver_Id = Teams.Driver2);";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new Models.dtoDriver(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
         public Models.Driver getDriverByCode(int code)
         {
             Models.Driver retVal = null;
@@ -695,6 +719,30 @@ namespace dll_Utilities
                         while (reader.Read())
                         {
                             retVal.Add(new Models.Team(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public List<Models.dtoDriver> getDtoTeams()
+        {
+            List<Models.dtoDriver> retVal = new List<Models.dtoDriver>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                string sql = $"SELECT t.Team_id, t.SmallName, Drivers.FullName as Driver1, DriversFullName as Driver2, t.SmallLogo FROM Teams as t INNER JOIN Drivers ON (t.Driver1 = Drivers.Driver_Id AND t.Driver2 = Drivers.Driver_Id);";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new Models.dtoDriver(reader));
                         }
                     }
                 }

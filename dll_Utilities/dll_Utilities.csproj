@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Circuit.cs" />
+    <Compile Include="dtoModels\dtoDriver.cs" />
+    <Compile Include="dtoModels\dtoTeam.cs" />
     <Compile Include="Models\Result.cs" />
     <Compile Include="Models\Race.cs" />
     <Compile Include="Models\Driver.cs" />

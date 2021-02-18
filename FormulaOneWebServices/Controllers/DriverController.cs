@@ -9,8 +9,6 @@ using System.Data;
 
 namespace FormulaOneWebServices
 {
-    //api/Country
-    [Route("api/[controller]")]
     [ApiController]
     public class DriverController : ControllerBase
     {
@@ -18,36 +16,41 @@ namespace FormulaOneWebServices
         private const string CONNECTION_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + WORKINGPATH + @"FormulaOne.mdf;Integrated Security=True";
         Utilities_Database db = new Utilities_Database(WORKINGPATH, CONNECTION_STRING);
 
-        // GET: api/Drivers
+        [Route("api/driver/")]
+        //[Route("api/driver/all")]
         [HttpGet]
         public List<dll_Utilities.Models.Driver> Get()
         {
             return db.getDriverElementList();
         }
 
-        // GET: api/Country/5
-        [HttpGet("{id}")]
+        [Route("api/driver/mixed")]
+        [HttpGet]
+        public List<dll_Utilities.> mix()
+        {
+            return db.getDtoDrivers();
+        }
+
+        [Route("api/driver/{id}")]
+        [HttpGet]
         public dll_Utilities.Models.Driver Get(int id)
         {
             return db.getDriverByCode(id);
         }
 
-        // POST: api/Country
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //}
 
-        // PUT: api/Country/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }
