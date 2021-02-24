@@ -16,26 +16,33 @@ namespace FormulaOneWebServices
         private const string CONNECTION_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + WORKINGPATH + @"FormulaOne.mdf;Integrated Security=True";
         Utilities_Database db = new Utilities_Database(WORKINGPATH, CONNECTION_STRING);
 
-        [Route("api/driver/")]
-        //[Route("api/driver/all")]
+        [Route("api/drivers/")]
         [HttpGet]
         public List<dll_Utilities.Models.Driver> Get()
         {
             return db.getDriverElementList();
         }
 
-        [Route("api/driver/mixed")]
+        [Route("dto/drivers/")]
         [HttpGet]
-        public List<dll_Utilities.> mix()
+        public List<dll_Utilities.dtoModels.dtoDriver> GetDto()
         {
             return db.getDtoDrivers();
         }
 
-        [Route("api/driver/{id}")]
+        [Route("api/drivers/id/{id}")]
         [HttpGet]
         public dll_Utilities.Models.Driver Get(int id)
         {
             return db.getDriverByCode(id);
+        }
+
+        [Route("api/drivers/name/{name}")]
+        [HttpGet]
+        public dll_Utilities.Models.Driver Get(string name)
+        {
+            name = name.Replace('_', ' ');
+            return db.getDriverByName(name);
         }
 
         //[HttpPost]

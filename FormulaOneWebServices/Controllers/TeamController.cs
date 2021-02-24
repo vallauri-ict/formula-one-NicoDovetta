@@ -9,8 +9,6 @@ using System.Data;
 
 namespace FormulaOneWebServices
 {
-    //api/Country
-    [Route("api/[controller]")]
     [ApiController]
     public class TeamController : ControllerBase
     {
@@ -18,36 +16,54 @@ namespace FormulaOneWebServices
         private const string CONNECTION_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + WORKINGPATH + @"FormulaOne.mdf;Integrated Security=True";
         Utilities_Database db = new Utilities_Database(WORKINGPATH, CONNECTION_STRING);
 
-        // GET: api/Country
+        [Route("api/teams")]
         [HttpGet]
         public List<dll_Utilities.Models.Team> Get()
         {
             return db.getTeamsElementList();
         }
 
-        // GET: api/Country/5
+        [Route("dto/teams/")]
+        [HttpGet]
+        public List<dll_Utilities.dtoModels.dtoTeam> GetDto()
+        {
+            return db.getDtoTeams();
+        }
+
+        [Route("api/teams/id/{id}")]
         [HttpGet("{id}")]
         public dll_Utilities.Models.Team Get(int id)
         {
             return db.getTeamByCode(id);
         }
 
-        // POST: api/Country
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("api/teams/name/{name}")]
+        [HttpGet("{name}")]
+        public dll_Utilities.Models.Team Get(string name)
         {
+			if (name.Contains('_'))
+			{
+                name = name.Replace('_', ' ');
+			}
+            return db.getTeamByName(name);
         }
 
-        // PUT: api/Country/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //// POST: api/Country
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //}
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// PUT: api/Country/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
+
+        //// DELETE: api/ApiWithActions/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

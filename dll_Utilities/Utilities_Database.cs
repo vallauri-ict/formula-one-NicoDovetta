@@ -555,12 +555,12 @@ namespace dll_Utilities
             return retVal;
         }
 
-        public List<Models.dtoDriver> getDtoDrivers()
+        public List<dtoModels.dtoDriver> getDtoDrivers()
 		{
-            List<Models.dtoDriver> retVal = new List<Models.dtoDriver>();
+            List<dtoModels.dtoDriver> retVal = new List<dtoModels.dtoDriver>();
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
-                string sql = $"SELECT d.Driver_id, d.CountryCode, d.FullImage, d.FullName, Teams.SmallName as TeamName FROM Drivers as d INNER JOIN Teams ON (d.Driver_Id = Teams.Driver1 OR D.Driver_Id = Teams.Driver2);";
+                string sql = $"[dbo].[driversDtoData]";
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -571,7 +571,7 @@ namespace dll_Utilities
                     {
                         while (reader.Read())
                         {
-                            retVal.Add(new Models.dtoDriver(reader));
+                            retVal.Add(new dtoModels.dtoDriver(reader));
                         }
                     }
                 }
@@ -586,6 +586,31 @@ namespace dll_Utilities
             {
                 StringBuilder sb = new StringBuilder();
                 string sql = $"SELECT * FROM Drivers WHERE Driver_id = {code};";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal = new Models.Driver(reader);
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public Models.Driver getDriverByName(string name)
+        {
+            Models.Driver retVal = null;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Drivers WHERE FullName LIKE '{name}';";
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -726,12 +751,12 @@ namespace dll_Utilities
             return retVal;
         }
 
-        public List<Models.dtoDriver> getDtoTeams()
+        public List<dtoModels.dtoTeam> getDtoTeams()
         {
-            List<Models.dtoDriver> retVal = new List<Models.dtoDriver>();
+            List<dtoModels.dtoTeam> retVal = new List<dtoModels.dtoTeam>();
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
-                string sql = $"SELECT t.Team_id, t.SmallName, Drivers.FullName as Driver1, DriversFullName as Driver2, t.SmallLogo FROM Teams as t INNER JOIN Drivers ON (t.Driver1 = Drivers.Driver_Id AND t.Driver2 = Drivers.Driver_Id);";
+                string sql = $"[dbo].[teamsDtoData]";
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -742,7 +767,7 @@ namespace dll_Utilities
                     {
                         while (reader.Read())
                         {
-                            retVal.Add(new Models.dtoDriver(reader));
+                            retVal.Add(new dtoModels.dtoTeam(reader));
                         }
                     }
                 }
@@ -757,6 +782,31 @@ namespace dll_Utilities
             {
                 StringBuilder sb = new StringBuilder();
                 string sql = $"SELECT * FROM Teams WHERE Team_id = {code};";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal = new Models.Team(reader);
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public Models.Team getTeamByName(string name)
+        {
+            Models.Team retVal = null;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Teams WHERE SmallName LIKE '{name}';";
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
