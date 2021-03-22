@@ -9,45 +9,38 @@ using System.Data;
 
 namespace FormulaOneWebServices
 {
-    //api/Country
-    [Route("api/[controller]")]
-    [ApiController]
     public class CircuitController : ControllerBase
     {
         private const string WORKINGPATH = @"C:\data\formulaOne\";
         private const string CONNECTION_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + WORKINGPATH + @"FormulaOne.mdf;Integrated Security=True";
         Utilities_Database db = new Utilities_Database(WORKINGPATH, CONNECTION_STRING);
 
-        // GET: api/Country
-        [HttpGet]
+        [Route("api/circuits/")]
         public List<dll_Utilities.Models.Circuit> Get()
         {
             return db.getCircuitsElementList();
         }
 
-        // GET: api/Country/5
-        [HttpGet("{id}")]
+        [Route("api/dto-circuits/")]
+        public List<dll_Utilities.dtoModels.dtoCountry> GetDto()
+        {
+            return db.getDtoCircuits();
+        }
+
+        [Route("api/circuit/{id}")]
         public dll_Utilities.Models.Circuit Get(int id)
         {
-            return db.getCircuitByCode(id);
+            return db.getCircuitByCode(id)
         }
 
-        // POST: api/Country
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("api/circuits/{name}")]
+        public List<dll_Utilities.Models.Circuit> GetName(string name)
         {
-        }
-
-        // PUT: api/Country/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            if (name.Contains('_'))
+            {
+                name = name.Replace('_', ' ');
+            }
+            return db.getcircuitByName(name);
         }
     }
 }

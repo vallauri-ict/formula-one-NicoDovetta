@@ -6,6 +6,7 @@ using System.Threading;
 using System.IO;
 using System.Data.SqlClient;
 using System.Data;
+using dll_Utilities.Models;
 
 namespace dll_Utilities
 {
@@ -456,6 +457,29 @@ namespace dll_Utilities
             return retVal;
         }
 
+        public List<dtoModels.dtoCircuit> getDtoCircuits()
+        {
+            List<dtoModels.dtoCircuit> retVal = new List<dtoModels.dtoCircuit>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                string sql = $"[dbo].[countriesDtoData]";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new dtoModels.dtoCircuit(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
 
         public Models.Circuit getCircuitByCode(int code)
         {
@@ -475,6 +499,31 @@ namespace dll_Utilities
                         while (reader.Read())
                         {
                             retVal = new Models.Circuit(reader);
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public List<Circuit> getcircuitByName(string name)
+        {
+            List<Circuit> retVal = new List<Circuit>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Circuits WHERE Name = {name};";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new Circuit(reader));
                         }
                     }
                 }
@@ -506,6 +555,30 @@ namespace dll_Utilities
             return retVal;
         }
 
+        public List<dtoModels.dtoCountry> getDtoCountries()
+        {
+            List<dtoModels.dtoCountry> retVal = new List<dtoModels.dtoCountry>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                string sql = $"[dbo].[countriesDtoData]";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new dtoModels.dtoCountry(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
         public Models.Country getCountryByCode(string code)
         {
             Models.Country retVal = null;
@@ -524,6 +597,31 @@ namespace dll_Utilities
                         while (reader.Read())
                         {
                             retVal = new Models.Country(reader);
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public List<Models.Country> getCountryByName(string name)
+        {
+            List<Models.Country> retVal = new List<Models.Country>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Countries WHERE CountryName LIKE '{name}';";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new Models.Country(reader));
                         }
                     }
                 }

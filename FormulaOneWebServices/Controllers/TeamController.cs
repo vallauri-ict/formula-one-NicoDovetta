@@ -9,7 +9,6 @@ using System.Data;
 
 namespace FormulaOneWebServices
 {
-    [ApiController]
     public class TeamController : ControllerBase
     {
         private const string WORKINGPATH = @"C:\data\formulaOne\";
@@ -17,28 +16,24 @@ namespace FormulaOneWebServices
         Utilities_Database db = new Utilities_Database(WORKINGPATH, CONNECTION_STRING);
 
         [Route("api/teams")]
-        [HttpGet]
         public List<dll_Utilities.Models.Team> Get()
         {
             return db.getTeamsElementList();
         }
 
-        [Route("dto/teams/")]
-        [HttpGet]
+        [Route("api/dto-teams/")]
         public List<dll_Utilities.dtoModels.dtoTeam> GetDto()
         {
             return db.getDtoTeams();
         }
 
-        [Route("api/teams/id/{id}")]
-        [HttpGet("{id}")]
+        [Route("api/teams/{id}")]
         public dll_Utilities.Models.Team Get(int id)
         {
             return db.getTeamByCode(id);
         }
 
-        [Route("api/teams/name/{name}")]
-        [HttpGet("{name}")]
+        [Route("api/teams/{name}")]
         public dll_Utilities.Models.Team Get(string name)
         {
 			if (name.Contains('_'))

@@ -9,7 +9,6 @@ using System.Data;
 
 namespace FormulaOneWebServices
 {
-    [ApiController]
     public class DriverController : ControllerBase
     {
         private const string WORKINGPATH = @"C:\data\formulaOne\";
@@ -17,28 +16,24 @@ namespace FormulaOneWebServices
         Utilities_Database db = new Utilities_Database(WORKINGPATH, CONNECTION_STRING);
 
         [Route("api/drivers/")]
-        [HttpGet]
         public List<dll_Utilities.Models.Driver> Get()
         {
             return db.getDriverElementList();
         }
 
-        [Route("dto/drivers/")]
-        [HttpGet]
+        [Route("api/dto-drivers/")]
         public List<dll_Utilities.dtoModels.dtoDriver> GetDto()
         {
             return db.getDtoDrivers();
         }
 
-        [Route("api/drivers/id/{id}")]
-        [HttpGet]
+        [Route("api/drivers/{id}")]
         public dll_Utilities.Models.Driver Get(int id)
         {
             return db.getDriverByCode(id);
         }
 
-        [Route("api/drivers/name/{name}")]
-        [HttpGet]
+        [Route("api/drivers/{name}")]
         public dll_Utilities.Models.Driver Get(string name)
         {
             name = name.Replace('_', ' ');
