@@ -27,13 +27,13 @@ namespace FormulaOneWebServices
             return db.getDtoCountries();
         }
 
-        [Route("api/countries-isoCode/{iscoCode}")]
+        [Route("api/countries/{iscoCode}")]
         public dll_Utilities.Models.Country Get(string isoCode)
         {
             return db.getCountryByCode(isoCode);
         }
 
-        [Route("api/countries-namme/{name}")]
+        [Route("api/countries/name/{name}")]
         public List<dll_Utilities.Models.Country> GetName(string name)
         {
             if (name.Contains('_'))

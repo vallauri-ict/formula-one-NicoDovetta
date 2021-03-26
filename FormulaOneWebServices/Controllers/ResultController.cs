@@ -9,9 +9,6 @@ using System.Data;
 
 namespace FormulaOneWebServices
 {
-    //api/Country
-    [Route("api/[controller]")]
-    [ApiController]
     public class ResultController : ControllerBase
     {
         private const string WORKINGPATH = @"C:\data\formulaOne\";
@@ -23,31 +20,6 @@ namespace FormulaOneWebServices
         public List<dll_Utilities.Models.Result> Get()
         {
             return db.getResultsElementList();
-        }
-
-        // GET: api/Country/5
-        [HttpGet("{id}")]
-        public dll_Utilities.Models.Result Get(int id)
-        {
-            return db.getResultByCode(id);
-        }
-
-        // POST: api/Country
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Country/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

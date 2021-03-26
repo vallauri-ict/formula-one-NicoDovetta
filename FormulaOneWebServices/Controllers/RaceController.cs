@@ -9,45 +9,28 @@ using System.Data;
 
 namespace FormulaOneWebServices
 {
-    //api/Country
-    [Route("api/[controller]")]
-    [ApiController]
     public class RaceController : ControllerBase
     {
         private const string WORKINGPATH = @"C:\data\formulaOne\";
         private const string CONNECTION_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + WORKINGPATH + @"FormulaOne.mdf;Integrated Security=True";
         Utilities_Database db = new Utilities_Database(WORKINGPATH, CONNECTION_STRING);
 
-        // GET: api/Country
-        [HttpGet]
+        [Route("api/races/")]
         public List<dll_Utilities.Models.Race> Get()
         {
             return db.getRacesElementList();
         }
 
-        // GET: api/Country/5
-        [HttpGet("{id}")]
+        [Route("api/dto-races/")]
+        public List<dll_Utilities.dtoModels.dtoRace> GetDto()
+        {
+            return db.getDtoRace();
+        }
+
+        [Route("api/races/{id}")]
         public dll_Utilities.Models.Race Get(int id)
         {
             return db.getRaceByCode(id);
-        }
-
-        // POST: api/Country
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Country/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

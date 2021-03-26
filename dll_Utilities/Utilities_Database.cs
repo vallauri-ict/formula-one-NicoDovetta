@@ -7,6 +7,7 @@ using System.IO;
 using System.Data.SqlClient;
 using System.Data;
 using dll_Utilities.Models;
+using dll_Utilities.dtoModels;
 
 namespace dll_Utilities
 {
@@ -60,7 +61,7 @@ namespace dll_Utilities
             con.Close();
         }
 
-        public void Backup()
+		public void Backup()
         {
             Console.Clear();
             string bckName = "";
@@ -744,6 +745,30 @@ namespace dll_Utilities
                         while (reader.Read())
                         {
                             retVal.Add(new Models.Race(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public List<dtoRace> getDtoRace()
+        {
+            List<dtoModels.dtoRace> retVal = new List<dtoModels.dtoRace>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                string sql = $"[dbo].[racesDtoData]";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new dtoModels.dtoRace(reader));
                         }
                     }
                 }

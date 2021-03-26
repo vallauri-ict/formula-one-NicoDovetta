@@ -22,7 +22,7 @@ namespace FormulaOneWebServices
         }
 
         [Route("api/dto-circuits/")]
-        public List<dll_Utilities.dtoModels.dtoCountry> GetDto()
+        public List<dll_Utilities.dtoModels.dtoCircuit> GetDto()
         {
             return db.getDtoCircuits();
         }
