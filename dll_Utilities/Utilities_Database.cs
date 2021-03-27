@@ -850,6 +850,86 @@ namespace dll_Utilities
             return retVal;
         }
 
+        public List<Result> getResultByDriver(int id)
+        {
+            List<Result> retVal = new List<Result>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Results WHERE Driver_id = {id};";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new Models.Result(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public List<Result> getResultByRace(int id)
+        {
+            List<Result> retVal = new List<Result>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Results WHERE Race_id = {id};";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new Models.Result(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public List<Result> getResultByTeam(int id)
+        {
+            List<Result> retVal = new List<Result>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql = $"SELECT * FROM Results WHERE Driver_id = (Select driver1 from teams where Team_id = {id}) OR Driver_id = (Select driver2 from teams where Team_id = {id});";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+
+                    // create data adapter
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new Models.Result(reader));
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public Statistics getResultsStat()
+		{
+
+		}
+
         public List<Models.Team> getTeamsElementList()
         {
             List<Models.Team> retVal = new List<Models.Team>();

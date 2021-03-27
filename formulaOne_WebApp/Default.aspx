@@ -24,12 +24,13 @@
         </div>
         <div style="width:97%;height:auto;margin:1% auto;">
             <asp:DropDownList ID="apiSel" runat="server" AutoPostBack="true" OnSelectedIndexChanged="apiSel_SelectedIndexChanged">
-                <asp:ListItem>api/country</asp:ListItem>
-                <asp:ListItem>api/circuit</asp:ListItem>
-                <asp:ListItem>api/team</asp:ListItem>
-                <asp:ListItem>api/driver</asp:ListItem>
-                <asp:ListItem>api/race</asp:ListItem>
-                <asp:ListItem>api/result</asp:ListItem>
+                <asp:ListItem>api/dto-teams/</asp:ListItem>
+                <asp:ListItem>api/dto-races/</asp:ListItem>
+                <asp:ListItem>api/dto-drivers/</asp:ListItem>
+                <asp:ListItem>api/dto-countries/</asp:ListItem>
+                <asp:ListItem>api/dto-circuits/</asp:ListItem>
+                <asp:ListItem>api/results/</asp:ListItem>
+                <asp:ListItem>api/results/stat/</asp:ListItem>
             </asp:DropDownList>
 
             <asp:TextBox ID="apiFilter" runat="server"></asp:TextBox>

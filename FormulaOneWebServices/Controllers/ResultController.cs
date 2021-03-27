@@ -15,11 +15,40 @@ namespace FormulaOneWebServices
         private const string CONNECTION_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + WORKINGPATH + @"FormulaOne.mdf;Integrated Security=True";
         Utilities_Database db = new Utilities_Database(WORKINGPATH, CONNECTION_STRING);
 
-        // GET: api/Country
-        [HttpGet]
+        [Route("api/results/")]
         public List<dll_Utilities.Models.Result> Get()
         {
             return db.getResultsElementList();
+        }
+
+        [Route("api/results/stats")]
+        public List<dll_Utilities.Models.Result> Get_s()
+        {
+            return db.getResultsStat();
+        }
+
+        [Route("api/results/{id}")]
+        public dll_Utilities.Models.Result Get(int id)
+		{
+            return db.getResultByCode(id);
+		}
+
+        [Route("api/results/driver/{id}")]
+        public List<dll_Utilities.Models.Result> Get_D(int id)
+        {
+            return db.getResultByDriver(id);
+        }
+
+        [Route("api/results/race/{id}")]
+        public List<dll_Utilities.Models.Result> Get_R(int id)
+        {
+            return db.getResultByRace(id);
+        }
+
+        [Route("api/results/team/{id}")]
+        public List<dll_Utilities.Models.Result> Get_T(int id)
+        {
+            return db.getResultByTeam(id);
         }
     }
 }
