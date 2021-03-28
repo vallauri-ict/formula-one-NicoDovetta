@@ -29,7 +29,6 @@
                 <asp:ListItem>api/dto-drivers/</asp:ListItem>
                 <asp:ListItem>api/dto-countries/</asp:ListItem>
                 <asp:ListItem>api/dto-circuits/</asp:ListItem>
-                <asp:ListItem>api/results/</asp:ListItem>
                 <asp:ListItem>api/results/stat/</asp:ListItem>
             </asp:DropDownList>
 

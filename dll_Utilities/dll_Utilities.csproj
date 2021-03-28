@@ -45,6 +45,7 @@
     <Compile Include="dtoModels\dtoCountry.cs" />
     <Compile Include="dtoModels\dtoCircuit.cs" />
     <Compile Include="dtoModels\dtoRace.cs" />
+    <Compile Include="Models\Stat.cs" />
     <Compile Include="Models\Circuit.cs" />
     <Compile Include="dtoModels\dtoDriver.cs" />
     <Compile Include="dtoModels\dtoTeam.cs" />
