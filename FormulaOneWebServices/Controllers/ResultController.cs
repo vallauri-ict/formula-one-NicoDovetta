@@ -21,12 +21,6 @@ namespace FormulaOneWebServices
             return db.getResultsElementList();
         }
 
-        [Route("api/results/stats")]
-        public List<dll_Utilities.Models.Result> Get_s()
-        {
-            return db.getResultsStat();
-        }
-
         [Route("api/results/{id}")]
         public dll_Utilities.Models.Result Get(int id)
 		{

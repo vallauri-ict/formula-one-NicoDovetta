@@ -925,10 +925,45 @@ namespace dll_Utilities
             return retVal;
         }
 
-        public Statistics getResultsStat()
+        public List<Stat> getResultsStat()
 		{
+            List<Stat> retVal = new List<Stat>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                StringBuilder sb = new StringBuilder();
+                string sql1 = "SELECT DISTINCT Driver_id FROM Results";
+                using (SqlCommand command1 = new SqlCommand(sql1, connection))
+                {
+                    connection.Open();
 
-		}
+                    // create data adapter
+                    using (SqlDataReader reader1 = command1.ExecuteReader())
+                    {
+                        int i = 0;
+                        while (reader1.Read())
+                        {
+                            string sql2 = $"[dbo].[teamsDtoData]({reader1.GetInt32(i)})";
+                            i++;
+
+                            using (SqlCommand command2 = new SqlCommand(sql1, connection))
+                            {
+                                connection.Open();
+
+                                // create data adapter
+                                using (SqlDataReader reader2 = command2.ExecuteReader())
+                                {
+                                    while (reader2.Read())
+                                    {
+                                        retVal.Add(new Models.Stat(reader2));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
 
         public List<Models.Team> getTeamsElementList()
         {
